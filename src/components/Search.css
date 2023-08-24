@@ -1,0 +1,8 @@
+/* styles.css */
+.input-placeholder::placeholder {
+     
+      opacity: 0.9 !important;
+      font-size: 13px !important;
+    
+  }
+ 
