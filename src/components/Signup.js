@@ -19,7 +19,7 @@ export default function Signup(props) {
         // API Call
         try {
           const response = await fetch(
-            "https://inotebookbackend1-oy2l.onrender.com/api/auth/createuser",
+            "https://inotebookbackend1-eavx.onrender.com/api/auth/createuser",
             {
               method: "POST",
               headers: {
@@ -71,7 +71,7 @@ export default function Signup(props) {
     // }
   };
   const inputstyle = {
-    background: `${props.mode !== "dark" ? "rgba(41, 40, 40, 0.44)" : "#ffffff54"}`,    color: `${props.mode === "dark" ? "black" : "white"}`,
+    background: `${props.mode !== "dark" ? "rgba(41, 40, 40, 0.44)" : "white"}`,    color: `${props.mode === "dark" ? "black" : "white"}`,
   };
   return (
     <div

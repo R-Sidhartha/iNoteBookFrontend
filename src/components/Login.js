@@ -10,7 +10,7 @@ export default function Login(props) {
   const handleLogin = async (e) => {
     e.preventDefault();
     // API Call
-    const response = await fetch("https://inotebookbackend1-oy2l.onrender.com/api/auth/login", {
+    const response = await fetch("https://inotebookbackend1-eavx.onrender.com/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export default function Login(props) {
     });
   };
   const inputstyle = {
-    background: `${props.mode !== "dark" ? "rgba(41, 40, 40, 0.44)" : "#ffffff54"}`,    color: `${props.mode === "dark" ? "black" : "white"}`,
+    background: `${props.mode !== "dark" ? "rgba(41, 40, 40, 0.44)" : "white"}`,    color: `${props.mode === "dark" ? "black" : "white"}`,
   };
 
   return (

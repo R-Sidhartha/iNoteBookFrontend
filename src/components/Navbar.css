@@ -32,4 +32,16 @@
         justify-content: space-between;
 width: 90vw;
     }
+   
+  
+}
+@media screen and (max-width:550px) {
+    .box2{
+        flex-direction: column;
+        width: 50vw;
+    }
+    .box2 button{
+        width: 92px;
+        margin: 10px 0px;
+            }
 }

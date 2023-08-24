@@ -115,6 +115,7 @@ const ViewNote = (props) => {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(editableNote.edescription);
+    showalert("Copied to Clipboard", "success");
   };
   const handleClearSpaces = () => {
     if (isEditing) {
@@ -123,6 +124,7 @@ const ViewNote = (props) => {
         setEditableNote({ ...editableNote, edescription: newText.join(" ") });
       }
     }
+    showalert("Cleared extra spaces", "success");
   };
 
   // If the note is not loaded yet or not found, you can handle that case here
@@ -150,14 +152,15 @@ const ViewNote = (props) => {
           <h2 className="left">Your Note</h2>
           <div className="box2 d-flex justify-content-between my-3 ">
             <button
-              className="btn btn-sm btn-dark mx-1"
+              className="btn btn-sm btn-dark mx-2"
               onClick={handleCopy}
+              type="button"
             >
               copy
             </button>
             {!isEditing && (
               <button
-                className="btn btn-sm btn-dark"
+                className="btn btn-sm btn-dark mx-2"
                 onClick={() => {
                   updateNote(note);
                 }}
@@ -171,6 +174,7 @@ const ViewNote = (props) => {
                   className="btn btn-sm btn-dark mx-2"
                   onClick={handleClearSpaces}
                   hidden={!isEditing ? true : false}
+                  type="button"
                 >
                   ClearSpaces
                 </button>
