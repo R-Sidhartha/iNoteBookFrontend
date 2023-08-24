@@ -15,6 +15,7 @@ const NoteState = (props) => {
       headers: {
         "auth-token": localStorage.getItem('authtoken'),
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*' ,
       },
       // body: JSON.stringify(),
     });
@@ -31,7 +32,9 @@ const NoteState = (props) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        "auth-token": localStorage.getItem('authtoken')
+        "auth-token": localStorage.getItem('authtoken'),
+        'Access-Control-Allow-Origin': '*' ,
+
       },
       body: JSON.stringify({Heading,title, description, tag})
     });
@@ -47,7 +50,9 @@ const NoteState = (props) => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        "auth-token": localStorage.getItem('authtoken')
+        "auth-token": localStorage.getItem('authtoken'),
+        'Access-Control-Allow-Origin': '*' ,
+
       }
     });
     const json = response.json(); 
@@ -62,7 +67,9 @@ const NoteState = (props) => {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          "auth-token": localStorage.getItem('authtoken')
+          "auth-token": localStorage.getItem('authtoken'),
+          'Access-Control-Allow-Origin': '*' ,
+
         }
       });
       const data = await response.json();
@@ -80,7 +87,9 @@ const NoteState = (props) => {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        "auth-token": localStorage.getItem('authtoken')
+        "auth-token": localStorage.getItem('authtoken'),
+        'Access-Control-Allow-Origin': '*' ,
+
       },
       body: JSON.stringify({Heading,title, description, tag})
     });
@@ -113,7 +122,9 @@ const NoteState = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": localStorage.getItem('authtoken')
+        "auth-token": localStorage.getItem('authtoken'),
+        'Access-Control-Allow-Origin': '*' ,
+
 
       },
     });
