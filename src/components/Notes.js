@@ -30,6 +30,7 @@ export default function Notes(props) {
           
         });
     }
+    // eslint-disable-next-line
   }, []);
 
   const filteredNotes = notes.filter(

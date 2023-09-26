@@ -79,8 +79,7 @@ const NoteState = (props) => {
 
   // Edit a Note
   const editnote = async (id,Heading, title, description, tag) => {
-    // API Call 
-    const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+  await fetch(`${host}/api/notes/updatenote/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -89,7 +88,6 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({Heading,title, description, tag})
     });
-    const json = await response.json(); 
 
      let newNotes = JSON.parse(JSON.stringify(notes))
     // Logic to edit in client
