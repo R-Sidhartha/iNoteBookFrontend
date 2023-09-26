@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import noteContext from "../context/Notes/noteContext";
 import ConfirmModal from "./ConfirmModal";
+import Spinner from "./Spinner";
 
 const ViewNote = (props) => {
   const { showalert } = props;
@@ -11,6 +12,7 @@ const ViewNote = (props) => {
   const [isEditing, setIsEditing] = useState(false);
   const [wordCount, setWordCount] = useState(0);
   const [charCount, setCharCount] = useState(0);
+  const [loading, setLoading] = useState(true); // Add a loading state
   const [editableNote, setEditableNote] = useState({
     eHeading: "",
     etitle: "",
@@ -27,10 +29,19 @@ const ViewNote = (props) => {
       setCharCount(chars);
     }
   };
-
   useEffect(() => {
     // Fetch the note details using the noteId
-    fetchNoteById(noteId);
+    fetchNoteById(noteId)
+    .then(() => {
+      setLoading(false);
+      
+    })
+    .catch((error) => {
+      // Handle any errors here and set loading to false
+      console.error("Error fetching notes:", error);
+      setLoading(false);
+      
+    });
     // eslint-disable-next-line
   }, [noteId]);
 
@@ -128,18 +139,18 @@ const ViewNote = (props) => {
   };
 
   // If the note is not loaded yet or not found, you can handle that case here
-  if (!note) {
-    return <div>Loading...</div>;
-  }
-
+ 
   return (
     <div
-      className="container my-4"
-      style={{
-        color: `${props.mode === "dark" ? "black" : "white"}`,
-        minHeight: "100vh",
-      }}
+    className="container my-4"
+    style={{
+      color: `${props.mode === "dark" ? "black" : "white"}`,
+      minHeight: "100vh",
+    }}
     >
+    {loading  ? (
+      <Spinner/>// Replace with your spinner component
+     ) : (
       <form onSubmit={handleSave}>
         <div
           className="viewhead d-flex"
@@ -169,7 +180,7 @@ const ViewNote = (props) => {
               </button>
             )}
             {isEditing && (
-              <div>
+              <div className="editbox d-flex">
                 <button
                   className="btn btn-sm btn-dark mx-2"
                   onClick={handleClearSpaces}
@@ -253,6 +264,7 @@ const ViewNote = (props) => {
           ></textarea>
         </div>
       </form>
+     )}
       {showModal && (
         <ConfirmModal
           title="Delete Note ?"

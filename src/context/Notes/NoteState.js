@@ -15,13 +15,13 @@ const NoteState = (props) => {
       headers: {
         "auth-token": localStorage.getItem('authtoken'),
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*' ,
       },
       // body: JSON.stringify(),
     });
   
     const json= await response.json() 
-    setNotes(json)
+      setNotes(json)
+   
   }
 
   // Add a Note
@@ -33,7 +33,6 @@ const NoteState = (props) => {
       headers: {
         'Content-Type': 'application/json',
         "auth-token": localStorage.getItem('authtoken'),
-        'Access-Control-Allow-Origin': '*' ,
 
       },
       body: JSON.stringify({Heading,title, description, tag})
@@ -51,7 +50,6 @@ const NoteState = (props) => {
       headers: {
         'Content-Type': 'application/json',
         "auth-token": localStorage.getItem('authtoken'),
-        'Access-Control-Allow-Origin': '*' ,
 
       }
     });
@@ -68,7 +66,6 @@ const NoteState = (props) => {
         headers: {
           'Content-Type': 'application/json',
           "auth-token": localStorage.getItem('authtoken'),
-          'Access-Control-Allow-Origin': '*' ,
 
         }
       });
@@ -88,7 +85,6 @@ const NoteState = (props) => {
       headers: {
         'Content-Type': 'application/json',
         "auth-token": localStorage.getItem('authtoken'),
-        'Access-Control-Allow-Origin': '*' ,
 
       },
       body: JSON.stringify({Heading,title, description, tag})
@@ -123,7 +119,6 @@ const NoteState = (props) => {
       headers: {
         "Content-Type": "application/json",
         "auth-token": localStorage.getItem('authtoken'),
-        'Access-Control-Allow-Origin': '*' ,
 
 
       },
@@ -132,9 +127,16 @@ const NoteState = (props) => {
     setUser(json)
     localStorage.setItem("userData", JSON.stringify(json));
   };
+
+  const clearNotes=()=>{
+    setNotes([])
+  }
+  const clearNote=()=>{
+    setNote([])
+  }
   
   return (
-    <NoteContext.Provider value={{ notes,note, addnote, deletenote, editnote, getNotes,fetchNoteById,user,handleuser }}>
+    <NoteContext.Provider value={{ notes,note, addnote, deletenote, editnote, getNotes,fetchNoteById,user,handleuser,clearNotes,clearNote }}>
       {props.children}
     </NoteContext.Provider>
   )

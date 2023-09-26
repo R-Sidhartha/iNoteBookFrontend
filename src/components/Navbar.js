@@ -10,13 +10,14 @@ import './Navbar.css'
 
 export default function Navbar(props) {
   const context = useContext(noteContext);
-  const { handleuser } = context;
+  const { handleuser,clearNotes } = context;
   const location = useLocation();
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("authtoken");
     localStorage.removeItem("userData");
     navigate("/login");
+    clearNotes()
   };
   const isAuthTokenAvailable = localStorage.getItem("authtoken");
   const [searchQuery, setSearchQuery] = useState("");

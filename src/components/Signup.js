@@ -15,7 +15,6 @@ export default function Signup(props) {
     if (
       credentials.password === credentials.cpassword 
     )
-      if (isNameValid(credentials.name)) {
         // API Call
         try {
           const response = await fetch(
@@ -24,7 +23,6 @@ export default function Signup(props) {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
-                'Access-Control-Allow-Origin': '*' ,
 
               },
               body: JSON.stringify({
@@ -34,7 +32,6 @@ export default function Signup(props) {
               }),
             }
           );
-          console.log("Response Status:", response.status);
 
           // Check if the response is not empty
           if (!response.ok) {
@@ -51,16 +48,9 @@ export default function Signup(props) {
           console.error("Error parsing JSON response:", error);
           // Handle the error here (e.g., show an error message to the user)
         }
-      } else {
-        props.showalert("The first letter of Name should be Capital", "danger");
-      }
     else {
       props.showalert("Incorrect confirm passwod", "danger");
     }
-  };
-  const isNameValid = (value) => {
-    // Check if the first character is an uppercase letter
-    return /^[A-Z]/.test(value);
   };
   const onChange = (e) => {
     const { name, value } = e.target;
